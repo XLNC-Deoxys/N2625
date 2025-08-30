@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CAD Models | N2625</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .site-navbar {
+            position: relative;
+            background-color: #fff;
+        }
+
+        .site-navbar:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.9;
+            background: #000;
+            z-index: -1;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            display: block;
+            border-bottom: 2px solid #f1f1f1;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card-meta {
+            color: #28a745;
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .card-title {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background: #007bff;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 14px;
+            margin-top: 15px;
+            transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            font-weight: 600;
+        }
+
+        .download-btn:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            color: white;
+            font-weight: 600;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 2rem;
+            border: 1px solid #888;
+            width: 90%;
+            max-width: 800px;
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .modal-open {
+            overflow: hidden;
+        }
+
+        .close {
+            position: absolute;
+            right: 1.5rem;
+            top: 1rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #666;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .close:hover {
+            color: #000;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        /* Enhanced Search Styles */
+        .search-container {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .search-header {
+            text-align: center;
+            margin-bottom: 0rem; /* Убрали отступ */
+        }
+
+        .search-title {
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: #1a202c;
+            display: none; /* Hide the title */
+        }
+
+        .search-form-cad {
+            display: flex;
+            flex-wrap: wrap; /* Allow items to wrap to the next line */
+            gap: 1rem;
+            justify-content: space-between; /* Space items evenly */
+            align-items: center; /* Vertically align items */
+        }
+
+        @media (max-width: 768px) {
+            .search-form-cad {
+                flex-direction: column;
+                align-items: stretch; /* Stretch items to full width */
+            }
+        }
+
+
+        .search-input-wrapper {
+            flex: 1;
+            position: relative;
+        }
+
+        .search-input, .category-select {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 0.75rem;
+            background-color: #f8fafc;
+            transition: all 0.2s;
+        }
+
+        .search-input:focus, .category-select:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        }
+
+        .search-icon, .filter-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+        }
+
+        .category-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .category-wrapper {
+                width: 33.333333%;
+            }
+        }
+
+        .active-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .filter-tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            background-color: #eff6ff;
+            color: #1d4ed8;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .filter-tag:hover {
+            background-color: #dbeafe;
+        }
+
+        .filter-tag button {
+            margin-left: 0.5rem;
+            color: #1d4ed8;
+            opacity: 0.7;
+        }
+
+        .filter-tag button:hover {
+            opacity: 1;
+        }
+
+        .search-stats {
+            margin-top: 1rem;
+            font-size: 0.875rem;
+            color: #64748b;
+            display: none; /* Hide the stats */
+        }
+    </style>
+</head>
+<body class="min-h-screen" data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+
+<div class="site-wrap" id="home-section">
+
+    <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+            <div class="site-mobile-menu-close mt-3">
+                <span class="icon-close2 js-menu-toggle"></span>
+            </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+    </div>
+
+    <header class="site-navbar site-navbar-target" role="banner">
+        <div class="container">
+            <div class="row align-items-center position-relative">
+
+                <div class="col-lg-4">
+                    <nav class="site-navigation text-right ml-auto " role="navigation">
+                        <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
+                            <li ><a href="index.html" class="nav-link">Главная</a></li>
+                            <li><a href="technology.html" class="nav-link">Контент</a></li>
+                            <li class="active"><a href="404.html" class="nav-link">CAD models</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <div class="col-lg-4 text-center">
+                    <div class="site-logo">
+                        <a href="index.html">N2625</a>
+                    </div>
+                    <div class="ml-auto toggle-button d-inline-block d-lg-none">
+                        <a href="#" class="site-menu-toggle py-5 js-menu-toggle text-white">
+                            <span class="icon-menu h3 text-white"></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <nav class="site-navigation text-left mr-auto " role="navigation">
+                        <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
+                            <li><a href="404.html" class="nav-link">О нас</a></li>
+                            <li><a href="blog.html" class="nav-link">Блог</a></li>
+                            <li><a href="contact.html" class="nav-link">Контакты</a></li>
+                            <li>
+                                <a href="#" id="signInButton" class="nav-link" title="Войти">
+                                    <button class="signin-button">
+                                        <i class="fab fa-google" style="color:white;  flex-shrink: 0;"></i>
+                                    </button>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <div class="container mx-auto px-4 py-8">
+        <!-- Search and Filter Section -->
+
+    <div class="container mx-auto px-4 py-8">
+        <div class="search-form-cad">
+            <div class="search-input-wrapper">
+                <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input
+                    type="text"
+                    id="search-input"
+                    class="search-input"
+                    placeholder="Enter model name..."
+                />
+            </div>
+            <div class="category-wrapper">
+                <svg class="filter-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+                </svg>
+                <select
+                    id="category-filter"
+                    class="category-select"
+                >
+                    <option value="">All categories</option>
+                </select>
+            </div>
+        </div>
+        <div id="active-filters" class="active-filters"></div>
+        <div class="search-stats" id="search-stats"></div>
+
+        <!-- Grid Section -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="cad-models-grid">
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="modelModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">×</span>
+            <div class="flex flex-col md:flex-row gap-6">
+                <div class="md:w-1/2">
+                    <img id="modalImage" src="" alt="Model Image" class="w-full h-auto rounded-lg shadow-lg">
+                </div>
+                <div class="md:w-1/2 space-y-4">
+                    <h3 id="modalTitle" class="text-2xl font-bold text-gray-800"></h3>
+                    <p id="modalDescription" class="text-gray-600"></p>
+                    <div class="flex gap-4 mt-6">
+                        <a id="modalDownloadBtn" href="#" class="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors duration-200">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                            </svg>
+                            Download
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-lg-4">
+                    <div class="widget">
+                        <h3>О нас</h3>
+                        <p>Мы — команда N2625, занимаемся робототехникой и стремимся к инновациям и победам в международных соревнованиях.</p>
+                    </div>
+                    <div class="widget">
+                        <h3>Связаться с нами</h3>
+                        <ul class="social list-unstyled">
+                            <li><a href="#"><span class="icon-facebook"></span></a></li>
+                            <li><a href="#"><span class="icon-twitter"></span></a></li>
+                            <li><a href="https://www.instagram.com/robotekftc"><span class="icon-instagram"></span></a></li>
+                            <li><a href="#"><span class="icon-linkedin"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="widget">
+                        <h3>Навигация</h3>
+                        <ul class="links list-unstyled">
+                            <li><a href="index.html">Main</a></li>
+                            <li><a href="404.html">About</a></li>
+                            <li><a href="technology.html">Сontent</a></li>
+                            <li><a href="cad.html">Cad models</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/jquery.sticky.js"></script>
+<script src="js/jquery.waypoints.min.js"></script>
+<script src="js/jquery.animateNumber.min.js"></script>
+<script src="js/jquery.fancybox.min.js"></script>
+<script src="js/jquery.easing.1.3.js"></script>
+<script src="js/aos.js"></script>
+
+<script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var siteMobileMenu = document.querySelector('.site-mobile-menu');
+            var siteMobileMenuHeader = document.querySelector('.site-mobile-menu-header');
+            var siteMobileMenuClose = document.querySelector('.site-mobile-menu-close');
+            var siteMobileMenuBody = document.querySelector('.site-mobile-menu-body');
+            var siteMenuToggle = document.querySelector('.site-menu-toggle');
+
+            // Function to open the mobile menu
+            function openMobileMenu() {
+                siteMobileMenu.classList.add('active');
+                document.body.classList.add('modal-open'); // Prevent scrolling when the menu is open
+            }
+
+            // Function to close the mobile menu
+            function closeMobileMenu() {
+                siteMobileMenu.classList.remove('active');
+                document.body.classList.remove('modal-open'); // Re-enable scrolling
+            }
+
+            // Event listener for opening the mobile menu
+            siteMenuToggle.addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent the default action
+                openMobileMenu();
+            });
+
+            // Event listener for closing the mobile menu
+            siteMobileMenuClose.addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent the default action
+                closeMobileMenu();
+            });
+
+            // Close the mobile menu when clicking outside of it
+            document.addEventListener('click', function(event) {
+                if (siteMobileMenu.classList.contains('active') && !event.target.closest('.site-mobile-menu, .site-menu-toggle')) {
+                    closeMobileMenu();
+                }
+            });
+
+            // Prevent scrolling when the menu is open
+            siteMobileMenu.addEventListener('touchmove', function(event) {
+                event.stopPropagation();
+            });
+        });
+    </script>
+
+<script>
+    let allModels = [];
+    const grid = document.getElementById('cad-models-grid');
+    const searchInput = document.getElementById('search-input');
+    const categoryFilter = document.getElementById('category-filter');
+    const activeFilters = document.getElementById('active-filters');
+    const searchStats = document.getElementById('search-stats');
+
+    async function loadModels() {
+        try {
+            const response = await fetch('data.json');
+            allModels = await response.json();
+            populateCategories(allModels);
+            filterModels();
+        } catch (error) {
+            console.error("Error loading data: ", error);
+            grid.innerHTML = '<p class="text-red-500 text-center col-span-full">Error loading data. Please try again later.</p>';
+        }
+    }
+
+    function populateCategories(models) {
+        const categories = [...new Set(models.map(model => model.category))];
+        categories.forEach(category => {
+            const option = document.createElement('option');
+            option.value = category;
+            option.textContent = category;
+            categoryFilter.appendChild(option);
+        });
+    }
+
+    function displayModels(models) {
+        grid.innerHTML = models.length ? models.map((model, index) => `
+            <div class="card-hover" data-index="${index}">
+                <div class="card">
+                    <img src="${model.imageUrl}" alt="${model.title}" class="card-image">
+                    <div class="card-body">
+                        <span class="card-meta">${model.category}</span>
+                        <h3 class="card-title">${model.title}</h3>
+                        <a href="${model.downloadLink}" class="download-btn">
+                            <svg class="inline-block w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                            </svg>
+                            Download
+                        </a>
+                    </div>
+                </div>
+            </div>
+        `).join('') : '<p class="text-gray-500 text-center col-span-full">No models found</p>';
+
+        // Update search stats
+        updateSearchStats(models.length);
+    }
+
+    function updateSearchStats(count) {
+        searchStats.textContent = `Showing ${count} result${count !== 1 ? 's' : ''}`;
+    }
+
+    function filterModels() {
+        const searchTerm = searchInput.value.toLowerCase();
+        const selectedCategory = categoryFilter.value;
+
+        let filteredModels = allModels.filter(model => {
+            const titleMatch = model.title.toLowerCase().includes(searchTerm);
+            const categoryMatch = !selectedCategory || model.category === selectedCategory;
+            return titleMatch && categoryMatch;
+        });
+
+        displayModels(filteredModels);
+        updateActiveFilters(searchTerm, selectedCategory);
+    }
+
+    function updateActiveFilters(searchTerm, category) {
+        activeFilters.innerHTML = '';
+
+        if (searchTerm) {
+            const searchFilter = createFilterTag('Search', searchTerm, () => {
+                searchInput.value = '';
+                filterModels(); // Перезапускаем фильтрацию
+            });
+            activeFilters.appendChild(searchFilter);
+        }
+
+        if (category) {
+            const categoryFilterTag = createFilterTag('Category', category, () => {
+                categoryFilter.value = '';
+                filterModels(); // Перезапускаем фильтрацию
+            });
+            activeFilters.appendChild(categoryFilterTag);
+        }
+    }
+
+    function createFilterTag(type, value, onRemove) {
+        const tag = document.createElement('div');
+        tag.className = 'filter-tag';
+        tag.innerHTML = `
+            <span>${type}: ${value}</span>
+            <button class="remove-filter" aria-label="Remove filter">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        `;
+        const removeButton = tag.querySelector('button');
+        removeButton.addEventListener('click', onRemove);  // Важно: вызываем onRemove
+        return tag;
+    }
+
+    // Modal functionality
+    const modal = document.getElementById("modelModal");
+
+    grid.addEventListener("click", function(event) {
+        const card = event.target.closest('.card-hover');
+        if (card) {
+            const index = card.getAttribute('data-index');
+            const model = allModels[index];
+
+            document.getElementById("modalTitle").textContent = model.title;
+            document.getElementById("modalDescription").textContent = model.description;
+            document.getElementById("modalImage").src = model.imageUrl;
+            document.getElementById("modalDownloadBtn").href = model.downloadLink;
+
+            modal.style.display = "block";
+            document.body.classList.add("modal-open");
+        }
+    });
+
+    function closeModal() {
+        modal.style.display = "none";
+        document.body.classList.remove("modal-open");
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            closeModal();
+        }
+    }
+
+    // Event listeners
+    searchInput.addEventListener('input', filterModels);
+    categoryFilter.addEventListener('change', filterModels);
+
+    // Initialize
+    loadModels();
+</script>
+
+</body>
+</html>

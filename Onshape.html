@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Onshape и его использование в FTC</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .site-navbar {
+            position: relative;
+            background-color: #fff;
+        }
+
+        .site-navbar:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.9;
+            background: #000;
+            z-index: -1;
+        }
+
+        .post-entry-1 {
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-bottom: 30px;
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .post-entry-1:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .content-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .blog-content {
+            flex: 2;
+            padding-right: 20px;
+            line-height: 1.6;
+        }
+
+        h2 {
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        h3 {
+            font-size: 28px;
+            color: #ff6600;
+            margin-top: 30px;
+        }
+
+        p, ul {
+            font-size: 18px;
+            color: #555;
+        }
+
+        ul {
+            padding-left: 20px;
+            list-style-type: square;
+        }
+
+        blockquote {
+            background: #f9f9f9;
+            border-left: 5px solid #ff6600;
+            padding: 15px;
+            margin: 20px 0;
+            font-style: italic;
+            color: #777;
+        }
+
+        .author-box {
+            /* flex: 1; - удалено, чтобы можно было установить фиксированную ширину */
+            width: 350px; /* Добавлена фиксированная ширина */
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            height: 250px;
+        }
+
+        .author-box img {
+            width: 90px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+
+        .author-box h4 {
+            color: #333;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .author-box p {
+            font-size: 16px;
+            color: #777;
+            font-style: italic;
+        }
+
+        .section-bg {
+            background-color: #f1f1f1;
+            padding: 50px 0;
+        }
+
+        li:hover {
+            cursor: pointer;
+        }
+
+        .image-frame {
+            max-width: 600px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+        }
+
+        figcaption {
+            font-size: 16px;
+            color: #777;
+            text-align: center;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+            border-radius: 10px; 
+            overflow: hidden;
+        }
+
+        .comparison-table th, .comparison-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background-color: #f5f5f5; 
+            font-weight: bold;
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .comparison-table td:first-child {
+            font-weight: bold; 
+        }
+        @media (max-width: 768px) {
+             .blog-content {
+             padding-right: 0; 
+         }
+            .image-frame {
+            width: 100%; 
+            max-width: 100%;
+        }
+            h2 {
+            font-size: 28px;
+        } 
+            .content-wrapper {
+            flex-direction: column; 
+        }
+            .author-box {
+            width: 100%;
+            margin-top: 20px;
+        }
+        }
+    </style>
+</head>
+
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+<div class="site-wrap" id="home-section">
+
+    <header class="site-navbar site-navbar-target" role="banner">
+        <div class="container">
+            <div class="row align-items-center position-relative">
+                <div class="col-lg-4">
+                    <nav class="site-navigation text-right ml-auto" role="navigation">
+                        <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
+                            <li><a href="index.html" class="nav-link">Главная</a></li>
+                            <li><a href="technology.html" class="nav-link">Контент</a></li>
+                            <li><a href="cad.html" class="nav-link">CAD models</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <div class="site-logo">
+                        <a href="index.html">Robotek Rage</a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <nav class="site-navigation text-left mr-auto" role="navigation">
+                        <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
+                            <li><a href="about.html" class="nav-link">О нас</a></li>
+                            <li><a href="blog.html" class="nav-link">Блог</a></li>
+                            <li><a href="contact.html" class="nav-link">Контакты</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="site-section section-bg">
+        <div class="container">
+            <div class="content-wrapper">
+                <div class="blog-content">
+                    <h2>Onshape и его использование в FTC</h2>
+                    <p>При разработке робота для FTC важно заранее продумать его конструкцию и компоненты. Для этого широко используется 3D-моделирование, которое помогает создать точный цифровой прототип. Существуют различные платформы для проектирования, такие как Fusion 360, SolidWorks. Однако, если ваш ноутбук или компьютер не обладает высокой производительностью, отличным решением станет Onshape. Благодаря облачной архитектуре он позволяет выполнять сложные расчёты и рендеринг на удалённых серверах, что делает его доступным даже на слабых устройствах.</p>
+
+                    <h3>Что такое Onshape?</h3>
+                    <p>Onshape — это мощная облачная платформа для 3D моделирования, которая позволяет создавать, редактировать и управлять проектами в режиме реального времени. В отличие от традиционных CAD-систем, Onshape работает полностью в браузере, что делает его доступным с любого устройства, подключенного к интернету.</p>
+
+                    <h3>Почему именно Onshape?</h3>
+                    <p>В соревнованиях FIRST Tech Challenge (FTC) точное проектирование конструкции робота играет важную роль. Onshape помогает командам:</p>
+                    <ul>
+                        <li>Создавать точные 3D-модели робота перед началом сборки.</li>
+                        <li>Планировать размещение компонентов (моторы, сервоприводы, контроллеры, приводы и др.).</li>
+                        <li>Избегать ошибок в конструкции до начала физической сборки.</li>
+                        <li>Совместно работать над проектом в режиме реального времени.</li>
+                        <li>Использовать готовые библиотеки компонентов от производителей (REV Robotics, goBILDA, Actobotics и др.).</li>
+                    </ul>
+
+                    <h3>Что нужно знать перед началом?</h3>
+                    <p>Перед началом работы необходимо разобраться с основными понятиями, такими как Assembly (сборка), Mates (соединения) и другие ключевые элементы Onshape. Это поможет эффективно проектировать и собирать конструкцию без ошибок.</p>
+
+                    <h3>Основные Виды Mates</h3>
+                    <p>Mates используются для определения взаимного расположения и движения компонентов в сборке. В Onshape они основаны на использовании Mate Connectors, что упрощает процесс настройки. Основные виды mates:</p>
+                    <ul>
+                        <li>Fastened Mate - полностью фиксирует два компонента относительно друг друга.</li>
+                        <li>Revolute Mate - позволяет одному компоненту вращаться вокруг одной оси.</li>
+                        <li>Slider Mate - обеспечивает линейное перемещение вдоль одной оси.</li>
+                        <li>Cylindrical Mate - сочетает вращательное и скользящее движения.</li>
+                        <li>Pin Slot Mate - позволяет вращаться вокруг одной оси и скользить вдоль другой.</li>
+                        <li>Planar Mate - ограничивает вращение вокруг двух осей и перемещение вдоль одной.</li>
+                        <li>Ball Mate - обеспечивает свободное вращение в пределах точки соединения.</li>
+                        <li>Parallel Mate - делает две оси или плоскости параллельными.</li>
+                        <li>Perpendicular Mate - устанавливает перпендикулярность между осями или плоскостями.</li>
+                        <li>Tangent Mate - создает касательное соединение между поверхностями.</li>
+                    </ul>
+                    <img src="images/ons.png" alt="Assembly Tab" class="image-frame">
+
+                    <h3>Основы работы с Assembly в Onshape.</h3>
+                    <p>В Onshape Assembly используются для объединения деталей и компонентов, а также для проверки их подвижности и взаимодействия.</p>
+                    <h4>Начало работы</h4>
+                    <p>При создании нового документа появляются две вкладки: Part Studio и Assembly.</p>
+                    <img src="images/ons2.png" alt="Assembly Tab" class="image-frame">
+                    <br><br>
+                    <p>Открывая Assembly, вы увидите панель инструментов, содержащую команды для вставки деталей и настройки Mates.</p>
+                    <img src="images/ons3.png" alt="Assembly Tab" class="image-frame">
+                    <br><br>
+                    <p>Можно создать несколько Assembly в одном документе, добавляя их через + в нижнем левом углу.</p>
+                    <img src="images/ons4.png" alt="Assembly Tab" class="image-frame">
+                    <br><br>
+                    <h4>Вставка деталей</h4>
+                    <p>Чтобы добавить первую деталь, нажмите Insert в панели инструментов.</p>
+                    <img src="images/ons5.png" alt="Assembly Tab" class="image-frame">
+                    <br><br>
+                    <p>В появившемся окне можно выбрать объекты из текущего или другого документа, включая Part Studio, Assembly, эскизы и поверхности.</p>
+                    <img src="images/ons6.png" alt="Assembly Tab" class="image-frame">
+                    <br><br>
+                    <p><b>Совет:</b> Первую деталь лучше вставлять без клика в графическом пространстве – просто нажмите зеленую галочку.</p>
+                    <img src="images/ons7.png" alt="Assembly Tab" class="image-frame">
+                    <br><br>
+                    <p>Это сохранит её исходное положение относительно начала координат. После вставки её можно зафиксировать (правый клик → Fix).</p>
+                    <img src="images/ons8.png" alt="Assembly Tab" class="image-frame">
+                    <br><br>
+                    <h3>Основы работы с Mates в Onshape.</h3>
+                    <p>Mates используются для точного позиционирования деталей в Assembly. В отличие от традиционных CAD-систем, где каждое движение детали настраивается отдельно, Onshape использует Mate Connectors – специальные точки на деталях, содержащие информацию о их положении и ориентации.</p>
+
+                    <h4>Как работают Mate Connectors?</h4>
+                    <p>При выборе любого Mate из панели инструментов и наведении курсора на деталь появляются возможные Mate Connectors. Они отображаются в виде координатных систем (X, Y, Z), что позволяет Onshape автоматически определять правильное положение детали при соединении.</p>
+
+                    <h4>Процесс соединения деталей</h4>
+                    <ol>
+                        <li>Выберите точку сопряжения первой детали (ЛКМ).</li>
+                        <img src="images/ons9.png" alt="Assembly Tab" class="image-frame">
+                        <br><br>
+                        <li>Выберите точку сопряжения второй детали (ЛКМ).</li>
+                        <img src="images/ons10.png" alt="Assembly Tab" class="image-frame">
+                        <br><br>
+                        <li>Onshape автоматически объединит детали, учитывая их координатные системы.</li>
+                        <img src="images/ons11.png" alt="Assembly Tab" class="image-frame">
+                        <br><br>
+                    </ol>
+
+                    <h3>Где брать 3D-модели деталей?</h3>
+                    <p>Вы можете найти 3D-модели деталей в формате, совместимом с Onshape, в обширных библиотеках готовых компонентов, например <a href="https://cad.onshape.com/appstore/apps/Design%20&%20Documentation/6515cfb91574253b1b96a6ba">Insert tool</a>.</p>
+
+                    <h3>Полезные Ресурсы:</h3>
+                    <ul>
+                        <li><a href="https://robotekrage.tech/blog.html">Другие статьи</a></li>
+                        <li><a href="https://learn.onshape.com/">Официальные гайды от Onshape</a></li>
+                        <li><a href="https://www.onshape.com/en/">Onshape</a></li>
+                    </ul>
+
+                    <h3>Заключение</h3>
+                    <p>Использование Onshape для FTC значительно упрощает процесс проектирования робота, позволяя избежать ошибок, улучшить конструкцию и сэкономить время на сборке. Освоив основные принципы работы в Onshape, ваша команда сможет эффективнее проектировать, тестировать и реализовывать свои идеи в соревнованиях!</p>
+
+                </div>
+                <div class="author-box">
+                    <img src="images/alizhan.jpg" alt="Автор">
+                    <h4>Автор: Ермек Алижан</h4>
+                    <p>Участник Robotek Rage</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="row justify-content-between">
+            <div class="col-lg-4">
+                <div class="widget">
+                    <h3>О нас</h3>
+                    <p>Мы — команда Robotek Rage, занимаемся робототехникой и стремимся к инновациям и победам в международных соревнованиях.</p>
+                </div>
+                <div class="widget">
+                    <h3>Связаться с нами</h3>
+                    <ul class="social list-unstyled">
+                        <li><a href="#"><span class="icon-facebook"></span></a></li>
+                        <li><a href="#"><span class="icon-twitter"></span></a></li>
+                        <li><a href="https://www.instagram.com/robotekftc"><span class="icon-instagram"></span></a></li>
+                        <li><a href="#"><span class="icon-linkedin"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="widget">
+                    <h3>Навигация</h3>
+                    <ul class="links list-unstyled">
+                        <li><a href="index.html">Main</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="technology.html">Сontent</a></li>
+                        <li><a href="cad.html">Cad models</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</div>
+
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

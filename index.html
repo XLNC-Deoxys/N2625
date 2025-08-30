@@ -1,0 +1,859 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Untree.co">
+    <link rel="shortcut icon" href="faviconR.png">
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="bootstrap, bootstrap4" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="css/aos.css">
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>N2625</title>
+
+    <!-- Firebase libraries -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-analytics-compat.js"></script>
+
+    <style>
+      @media (max-width: 768px) {
+          .post-entry-1 img {
+              width: 400px !important; 
+              height: 300px !important; 
+          }
+      }
+        .signin-button {
+            background-color: transparent;
+            color: white;
+            padding: 0.5em 0.7em;
+            cursor: pointer;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            margin-left: 5px;
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .signin-button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .signin-button i {
+            display: inline-block;
+            /* Make the icon display as inline block */
+            margin-right: 5px;
+            color: white;
+            /* Style for the floating button */
+        }
+
+        @keyframes respectFloat {
+            0% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100px);
+            }
+        }
+
+        .respect-float {
+            animation: respectFloat 1s ease-out forwards;
+        }
+
+        .floating-button {
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            transition: background-color 0.3s, transform 0.2s;
+            margin-bottom: 8px; /* Добавлен отступ от кнопки до меню */
+        }
+
+        .floating-button:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+            transform: scale(1.1);
+        }
+
+        #gtaClicker {
+            margin-right: 15px;
+            position: fixed;
+            bottom: 20px;
+            right: 4px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            z-index: 1000; 
+        }
+
+        #clickerMenu {
+            width: 320px;
+            background-color: #121212;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            font-family: 'Arial Black', sans-serif;
+            border: 2px solid #FFDA63;
+            transition: all 0.3s ease;
+            display: none; /* Изначально скрываем */
+            margin-bottom: 16px; /* Отступ от меню до кнопки */
+        }
+
+        #clickerMenu.show {
+            display: block;
+        }
+
+        #clickerMenu h2 {
+            color: #FFDA63;
+            font-size: 2em;
+            margin-bottom: 0.5em;
+        }
+
+        #clickerMenu #score {
+            color: white;
+            font-size: 3em;
+            margin-bottom: 1em;
+        }
+
+        #scoreBarContainer {
+            background-color: #2B2B2B;
+            height: 0.5em;
+            border-radius: 0.5em;
+            margin-bottom: 1em;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #scoreBar {
+            background-color: #FFDA63;
+            height: 100%;
+            width: 0;
+            transition: width 0.3s ease;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        #clickButton {
+            background-color: #FFDA63;
+            color: black;
+            padding: 0.8em;
+            border-radius: 0.8em;
+            border: none;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        #clickButton:hover {
+            transform: scale(1.05);
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.4);
+        }
+
+        #clickButton:active {
+            transform: scale(0.95);
+        }
+
+        #missionText {
+            color: #A1A1AA;
+            margin-top: 0.5em;
+            font-size: 0.8em;
+        }
+
+        #stats {
+            margin-top: 1em;
+            padding-top: 0.8em;
+            border-top: 1px solid #444;
+            color: #A1A1AA;
+            font-size: 0.7em;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #stats div {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.3em;
+        }
+
+        #stats .stat-value {
+            color: #FFDA63;
+        }
+
+        #notificationsContainer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .notification {
+            position: absolute;
+            left: 50%;
+            top: 30%; /* Чтобы появляться чуть выше */
+            transform: translate(calc(-50% + var(--offsetX, 0px)), calc(-50% + var(--offsetY, 0px)));
+            color: #FFDA63;
+            font-size: 1.5em;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            white-space: nowrap;
+            animation: respectFloat 1s ease-out forwards;
+        }
+
+        #scoreBarContainer::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            background-color: #2B2B2B;
+            width: calc(100% - var(--scorePercentage, 0%));
+        }
+    </style>
+
+</head>
+
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+
+<div class="site-wrap" id="home-section">
+
+    <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+            <div class="site-mobile-menu-close mt-3">
+                <span class="icon-close2 js-menu-toggle"></span>
+            </div>
+        </div>
+        <div class="site-mobile-menu-body">
+            <ul class="site-menu main-menu js-clone-nav d-lg-none">
+                <li>
+                    <a href="#" id="signInButtonMobile" class="nav-link" title="Войти">
+                        <button class="signin-button">
+                            <i class="fab fa-google" style="color:white;  flex-shrink: 0;"></i>
+                        </button>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <header class="site-navbar site-navbar-target" role="banner">
+        <div class="container">
+            <div class="row align-items-center position-relative">
+
+                <div class="col-lg-4">
+                    <nav class="site-navigation text-right ml-auto " role="navigation">
+                        <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
+                            <li class="active"><a href="index.html" class="nav-link">Главная</a></li>
+                            <li><a href="technology.html" class="nav-link">Контент</a></li>
+                            <li><a href="cad.html" class="nav-link">CAD models</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <div class="col-lg-4 text-center">
+                    <div class="site-logo">
+                        <a href="index.html">N2625</a>
+                    </div>
+                    <div class="ml-auto toggle-button d-inline-block d-lg-none">
+                        <a href="#" class="site-menu-toggle py-5 js-menu-toggle text-white">
+                            <span class="icon-menu h3 text-white"></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <nav class="site-navigation text-left mr-auto " role="navigation">
+                        <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
+                            <li><a href="404.html" class="nav-link">О нас</a></li>
+                            <li><a href="blog.html" class="nav-link">Блог</a></li>
+                            <li><a href="contact.html" class="nav-link">Контакты</a></li>
+                            <li>
+                                <a href="#" id="signInButton" class="nav-link" title="Войти">
+                                    <button class="signin-button">
+                                        <i class="fab fa-google" style="color:white;  flex-shrink: 0;"></i>
+                                    </button>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <div class="ftco-blocks-cover-1">
+        <div class="ftco-cover-1 overlay" style="background-image: url('images/nigga2.jpg')">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-lg-7 text-center">
+                        <h1 data-aos="fade-up" data-aos-delay="0">Мы команда N2625</h1>
+                        <p data-aos="fade-up" data-aos-delay="200"><a href="blog.html" class="btn primary-outline-white--hover">Наши статьи</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="features-v3">
+        <div class="container">
+            <div class="row justify-content-center text-center">
+                <div class="col-lg-5">
+                    <span class="text-primary">Наша цель</span>
+                    <h2 class="mb-5">Продвигать идеологии STEM</h2>
+                </div>
+            </div>
+            <div class="row gutter-v1 justify-content-stretch">
+                <div class="col-lg-4">
+                    <div class="feature-v3-item h-100">
+                        <img src="images/fon_2.jpg" alt="Image" class="img-fluid">
+                        <h3>Вы можете ознакомиться с нашими CAD моделями</h3>
+                        <p>В этом разделе представлены CAD модели нашего производства, а также другие рекомендованные нами CAD модели для использования.</p>
+                        <div class="more"><a href="cad.html">Перейти</a></div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="feature-v3-item h-100">
+                        <img src="images/fon_3.jpg" alt="Image" class="img-fluid">
+                        <h3>Наши онлайн уроки и лекции</h3>
+                        <p>В этом разделе представлены наши уроки по робототехнике, которые помогут командам при подготовке к таким соревнованиям как WRO, First, и др.</p>
+                        <div class="more"><a href="technology.html">Перейти</a></div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="feature-v3-item h-100">
+                        <img src="images/fon_4.jpg" alt="Image" class="img-fluid">
+                        <h3>Наш блог</h3>
+                        <p>В этом разделе представлены нишевые статьи по робототехнике. Мы предоставляем возможность креативным авторам опубликовать свои статьи на нашем сайте.</p>
+                        <div class="more"><a href="blog.html">Перейти</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container site-section">
+        <div class="row justify-content-center text-center mb-5">
+            <div class="col-md-6">
+                <span class="text-primary">Видеоуроки</span>
+                <h2 class="mb-4">Рекомендуем ознакомиться с этими видео</h2>
+                <p>Подборка видео которые помогут лучше понимать движение stem и first</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="feature-1">
+                    <img src="images/vid_1.png" alt="Image" class="img-fluid">
+                    <div class="feature-1-contents">
+                        <h2>How good are the new GoBilda Gripforce Wheels</h2>
+                        <p>In this video, we review our results of comparing the new Gripforce mecanum wheels by Gobilda</p>
+                        <p><a href="https://www.youtube.com/watch?v=tBlP19sm0wY&ab_channel=SuperSCREAMBros" class="more">Learn More</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="feature-1">
+                    <img src="images/vid_2.jpg" alt="Image" class="img-fluid">
+                    <div class="feature-1-contents">
+                        <h2>Introduction to programming in FTC</h2>
+                        <p>How does programming work in FGC. How does the robot's hardware work with it's software.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="feature-1">
+                    <img src="images/vid_3.jpg" alt="Image" class="img-fluid">
+                    <div class="feature-1-contents">
+                        <h2>Presentation of the new FTC 2025 season</h2>
+                        <p>Introduction to the rules and tasks of First Tech Challenge 2025-2025 INTO THE DEEP</p>
+                        <p><a href="https://www.youtube.com/watch?v=ewlDPvRK4U4&ab_channel=FIRSTTechChallenge" class="more">Learn More</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="feature-1">
+                    <img src="images/vid_4.png" alt="Image" class="img-fluid">
+                    <div class="feature-1-contents">
+                        <h2>Odometry for FIRST Tech Challenge Robots</h2>
+                        <p>A deep dive into the math of a simple odometry implementation for FIRST Tech Challenge</p>
+                        <p><a href="https://www.youtube.com/watch?v=Av9ZMjS--gY&ab_channel=DrBatanga" class="more">Learn More</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="feature-1">
+                    <img src="images/vid_5.png" alt="Image" class="img-fluid">
+                    <div class="feature-1-contents">
+                        <h2>FTC Programming Tutorial playlist</h2>
+                        <p>In this video they talk about programming servo motors for FTC</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="feature-1">
+                    <img src="images/vid_6.jpg" alt="Image" class="img-fluid">
+                    <div class="feature-1-contents">
+                        <h2>Basics of Autonomous Programming in FTC</h2>
+                        <p>Beginner Tutorial: Programming an Autonomous for FIRST Tech Challenge</p>
+                        <p><a href="https://www.youtube.com/watch?v=niNSYTxzivI&ab_channel=FTC%239511-LowVoltage" class="more">Learn More</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="site-section section-2">
+        <div class="container">
+            <div class="row justify-content-center text-center mb-5">
+                <div class="col-md-6">
+                    <span class="text-primary">Цель нашей команды</span>
+                    <h2 class="mb-2">Мы всегда рады делиться знаниями!</h2>
+                    <p class="opacity-5">Мы хотим помочь новичкам с началом их пути. Для этого мы создали онлайн платформу где они могут найти различные статьи, видеоуроки и CAD модели</p>
+                </div>
+            </div>
+        </div>
+        <div class="container site-section">
+            <div class="row align-items-stretch feature-2">
+                <div class="col-lg-9 feature-2-img">
+                    <img src="images/fon_1.jpg" alt="Image" class="img-fluid">
+                </div>
+                <div class="col-lg-3 feature-2-contents pl-lg-5">
+                    <div class="fixed-content">
+                        <span class="caption">01.</span>
+                        <h3 class="mb-4">С чего стоит начать?</h3>
+                        <p class="opacity-5">Перед началом работы важно ознакомиться с правилами. Это поможет понять основные требования и избежать ошибок в проектировании робота</p>
+                        <p class="opacity-5">Затем посмотрите, как работают опытные участники: их проекты, лайфхаки и стратегии. Это отличный способ найти вдохновение и узнать, как избежать распространенных ошибок.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container site-section">
+            <div class="row align-items-stretch feature-2">
+                <div class="col-lg-9 feature-2-img order-lg-2">
+                    <img src="images/fon_5.jpg" alt="Image" class="img-fluid">
+                </div>
+                <div class="col-lg-3 feature-2-contents pr-lg-5">
+                    <div class="fixed-content">
+                        <span class="caption">02.</span>
+                        <h3 class="mb-4">С чего следует начать разработку робота.</h3>
+                        <p class="opacity-5"><span style="font-weight: bold;">Постановка целей:</span> Определите задачи для робота и их роль.</p>
+                        <p class="opacity-5"><span style="font-weight: bold;">Подготовка и проектирование:</span> Используйте материалы c раздела CAD-модели. Эти ресурсы помогут вам ускорить процесс разработки и избежать распространенных ошибок.</p>
+                        <p class="opacity-5"><span style="font-weight: bold;">Сборка и тестирование:</span> Соберите робота и протестируйте его основные функции на надежность.</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="site-section bg-light">
+        <div class="container">
+            <div class="row align-items-stretch">
+                <div class="col-lg-3 col-md-6 mb-5">
+                    <div class="post-entry-1 h-100">
+                        <a href="Onshape.html">
+                            <img src="images/cadlogo.jpg" alt="Image" class="img-fluid" style="width: 300px; height: 200px;">
+                        </a>
+                        <div class="post-entry-1-contents">
+                            <span class="meta">December 29, 2024</span>
+                            <h2><a href="Onshape.html">Onshape и его использование в FTC</a></h2>
+                            <a href="Onshape.html" class="more">Читать статью</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-5">
+                    <div class="post-entry-1 h-100">
+                        <a href="intake.html">
+                            <img src="images/intake.png" alt="Image" class="img-fluid" style="width: 300px; height: 200px;">
+                        </a>
+
+                        <div class="post-entry-1-contents">
+                            <span class="meta">December 25, 2024</span>
+                            <h2><a href="intake.html">Активные и пассивные системы Intake для роботов</a></h2>
+                            <a href="intake.html" class="more">Читать статью</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-5">
+                    <div class="post-entry-1 h-100">
+                        <a href="sliders.html">
+                            <img src="images/sliders.png" alt="Image" class="img-fluid" style="width: 300px; height: 200px;">
+                        </a>
+                        <div class="post-entry-1-contents">
+                            <span class="meta">December 20, 2024</span>
+                            <h2><a href="sliders.html">Выбор слайдеров для FTC</a></h2>
+                            <a href="sliders.html" class="more">Читать статью</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-5">
+                    <div class="post-entry-1 h-100">
+                        <a href="liftextension.html">
+                            <img src="images/sliderlogo.jpg" alt="Image" class="img-fluid" style="width: 300px; height: 200px;">
+                        </a>
+                        <div class="post-entry-1-contents">
+                            <span class="meta">December 15, 2024</span>
+                            <h2><a href="liftextension.html">Выбор способа выдвижения лифта</a></h2>
+                            <a href="liftextension.html" class="more">Читать статью</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-lg-4">
+                    <div class="widget">
+                        <h3>О нас</h3>
+                        <p>Мы — команда N2625 , занимаемся робототехникой и стремимся к инновациям и победам в международных соревнованиях.</p>
+                    </div>
+                    <div class="widget">
+                        <h3>Связаться с нами</h3>
+                        <ul class="social list-unstyled">
+                            <li><a href="#"><span class="icon-facebook"></span></a></li>
+                            <li><a href="#"><span class="icon-twitter"></span></a></li>
+                            <li><a href="https://www.instagram.com/robotekftc"><span class="icon-instagram"></span></a></li>
+                            <li><a href="#"><span class="icon-linkedin"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="widget">
+                        <h3>Навигация</h3>
+                        <ul class="links list-unstyled">
+                            <li><a href="index.html">Main</a></li>
+                            <li><a href="404.html">About</a></li>
+                            <li><a href="technology.html">Сontent</a></li>
+                            <li><a href="cad.html">Cad models</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+   
+    <div id="gtaClicker">
+
+        <div id="clickerMenu">
+            <h2>RESPECT+</h2>
+            <div id="score">0</div>
+            <div id="scoreBarContainer">
+                <div id="scoreBar"></div>
+            </div>
+            <button id="clickButton">EARN RESPECT</button>
+            <div id="missionText">MISSION: Топ игроков получат призы от N2625 на Central Asia</div>
+            <div id="stats">
+                <div><span>RESPECT LEVEL</span><span class="stat-value" id="respectLevel">0</span></div>
+                <div><span>STATUS</span><span class="stat-value" id="status">ROOKIE</span></div>
+            </div>
+            <div id="notificationsContainer"></div>
+        </div>
+
+        <button id="floatingButton" class="floating-button">
+            <i class="fas fa-gamepad text-xl"></i>
+        </button>
+    </div>
+
+</div>
+
+
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/jquery.sticky.js"></script>
+<script src="js/jquery.waypoints.min.js"></script>
+<script src="js/jquery.animateNumber.min.js"></script>
+<script src="js/jquery.fancybox.min.js"></script>
+<script src="js/jquery.easing.1.3.js"></script>
+<script src="js/aos.js"></script>
+
+<script src="js/main.js"></script>
+<script>
+    const firebaseConfig = {
+        apiKey: "AIzaSyDaPh4tOyy8Q1QmYRf3WQBMwAOcyNCyGAA",
+        authDomain: "robotek-rage.firebaseapp.com",
+        projectId: "robotek-rage",
+        storageBucket: "robotek-rage.firebasestorage.app",
+        messagingSenderId: "862599723839",
+        appId: "1:862599723839:web:3c6feac98f80d28f14b18a",
+        measurementId: "G-KC22XB38KW"
+    };
+
+    function checkFirebaseConfiguration() {
+        if (!firebaseConfig.apiKey || firebaseConfig.apiKey === "YOUR_API_KEY") {
+            console.error("Firebase configuration is missing.  Please ensure you have populated the firebaseConfig object with your project's credentials.");
+            alert("Firebase Configuration Missing, please check the console for more information.");
+            return false;
+        }
+        return true;
+    }
+
+    let app;
+    try {
+        app = firebase.initializeApp(firebaseConfig);
+    } catch (error) {
+        console.error("Firebase initialization error:", error);
+        alert("Firebase initialization error: " + error.message);
+    }
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+    const signInButton = document.getElementById('signInButton');
+    const signInButtonMobile = document.getElementById('signInButtonMobile');
+    const floatingButton = document.querySelector(".floating-button");
+    const clickerMenu = document.getElementById('clickerMenu');
+    const scoreDisplay = document.getElementById('score');
+    const scoreBar = document.getElementById('scoreBar');
+    const scoreBarContainer = document.getElementById('scoreBarContainer');
+    const clickButton = document.getElementById('clickButton');
+    const missionText = document.getElementById('missionText');
+    const respectLevelDisplay = document.getElementById('respectLevel');
+    const statusDisplay = document.getElementById('status');
+    const notificationsContainer = document.getElementById('notificationsContainer');
+    let score = 0;
+    let showMenu = false;
+    const MAX_SCORE = 100;
+    let lastClickTime = 0;
+    const clickDelay = 200;
+    let isLoggedIn = false;
+
+    const initialSignInButtonHTML = signInButton.innerHTML;
+
+    function updateSignInButton(user) {
+        isLoggedIn = !!user; 
+        let buttonText = '';
+        let buttonTitle = '';
+
+        if (user) {
+            buttonText = '<i class="fab fa-google" style="color:white"></i> Выйти';
+            buttonTitle = 'Выйти';
+        } else {
+            buttonText = '<i class="fab fa-google" style="color:white"></i> Войти';
+            buttonTitle = 'Войти';
+        }
+
+        signInButton.innerHTML = buttonText;
+        signInButton.title = buttonTitle;
+
+        signInButtonMobile.innerHTML = buttonText;
+        signInButtonMobile.title = buttonTitle;
+
+        floatingButton.style.display = 'flex';
+    }
+
+    auth.onAuthStateChanged((user) => {
+        updateSignInButton(user);
+        if (user) {
+            loadData();
+        }
+    });
+
+    const signIn = (provider) => {
+        auth.signInWithPopup(provider)
+            .then((result) => {
+                const user = result.user;
+                console.log("User signed in:", user);
+                updateSignInButton(user);
+                loadData();
+            })
+            .catch((error) => {
+                let errorMessage = "Sign-in failed.";
+                if (error.code === 'auth/popup-closed-by-user') {
+                    errorMessage = "Sign-in popup was closed.";
+                } else if (error.code === 'auth/unauthorized-domain') {
+                    errorMessage = "This domain is not authorized.  Please authorize it in the Firebase console.";
+                }
+                alert(errorMessage);
+                console.error("Sign-in error:", error);
+                alert("Sign-in failed: " + error.message);
+            });
+    };
+
+    const signOut = () => {
+        auth.signOut()
+            .then(() => {
+                console.log('User signed out');
+                updateSignInButton(null);
+                resetClicker();
+            })
+            .catch((error) => {
+                console.error('Sign-out error:', error);
+                let errorMessage = "Sign-out failed.";
+                alert(errorMessage);
+            });
+    };
+
+
+    const signInClickHandler = (event) => {
+        if (!checkFirebaseConfiguration()) return;
+        if (auth.currentUser) {
+            signOut();
+        } else {
+            const provider = new firebase.auth.GoogleAuthProvider();
+            provider.setCustomParameters({ prompt: 'select_account' });
+            signIn(provider);
+        }
+        event.preventDefault();
+    };
+
+    signInButton.addEventListener('click', signInClickHandler);
+    signInButtonMobile.addEventListener('click', signInClickHandler);
+
+    function toggleClickerMenu() {
+        showMenu = !showMenu;
+        clickerMenu.classList.toggle('show');
+    }
+
+
+    floatingButton.addEventListener('click', toggleClickerMenu);
+
+    function saveData() {
+        if (!isLoggedIn) return;
+        db.collection("users").doc(auth.currentUser.uid).set({
+            score: score
+        })
+            .then(() => console.log("Data saved successfully!"))
+            .catch((error) => console.error("Error saving data:", error));
+    }
+
+    function handleClick() {
+        score++;
+        updateScore();
+        saveData(); 
+        createNotification();
+    }
+
+    function loadData() {
+        if (!isLoggedIn) {
+            resetClicker();
+            return;
+        }
+        db.collection("users").doc(auth.currentUser.uid).get()
+            .then((doc) => {
+                if (doc.exists) {
+                    score = doc.data().score || 0;
+                    updateScore();
+                    console.log("Data loaded successfully:", score);
+                } else {
+                    console.log("No data found, setting to 0");
+                    resetClicker();
+                    saveData();
+                }
+            })
+            .catch((error) => console.error("Error loading data:", error));
+    }
+
+    document.addEventListener('click', function (event) {
+        const isClickInsideMenu = clickerMenu.contains(event.target) || floatingButton.contains(event.target);
+        if (!isClickInsideMenu && clickerMenu.classList.contains('show')) {
+            toggleClickerMenu();
+        }
+    });
+
+    function updateScore() {
+        scoreDisplay.textContent = score;
+        const percentage = Math.min((score / MAX_SCORE) * 100, 100);
+        scoreBar.style.width = `${percentage}%`;
+        scoreBarContainer.style.setProperty('--scorePercentage', `${percentage}%`);
+
+        const respectLevel = Math.floor(score / 10);
+        respectLevelDisplay.textContent = respectLevel;
+
+        let status = 'ROOKIE';
+        if (score >= 10 && score < 50) {
+            status = 'THUG';
+        } else if (score >= 50) {
+            status = 'KINGPIN';
+        }
+        statusDisplay.textContent = status;
+    }
+
+
+    function createNotification() {
+        const notification = document.createElement('div');
+        notification.classList.add('notification');
+        notification.textContent = '+RESPECT';
+
+        const offsetX = Math.random() * 40 - 20;
+        const offsetY = Math.random() * 20 - 10;
+
+        notification.style.setProperty('--offsetX', `${offsetX}px`);
+        notification.style.setProperty('--offsetY', `${offsetY}px`);
+        notificationsContainer.appendChild(notification);
+
+        setTimeout(() => {
+            notification.remove();
+        }, 1000);
+    }
+
+    clickButton.addEventListener('click', addPoint);
+
+    function resetClicker() {
+        score = 0;
+        updateScore();
+        saveData();
+    }
+
+    function addPoint() {
+        if (!isLoggedIn) {
+            alert("Пожалуйста, войдите в аккаунт, чтобы кликать!");
+            return;
+        }
+
+        const now = Date.now();
+        if (now - lastClickTime > clickDelay) {
+            handleClick()
+            lastClickTime = now;
+        }
+    }
+</script>
+</body>
+</html>

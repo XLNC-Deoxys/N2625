@@ -1,0 +1,79 @@
+[
+  {
+    "title": "Intake Box V8",
+    "category": "Intake",
+    "imageUrl": "images/cad/intake_box.jpg",
+    "description": "Наш интейк с астанинской регионалки. расчитан на лего колеса диаметром 56 мм.",
+    "downloadLink": "files/IntakeBoxV8.SLDPRT"
+  },
+  {
+    "title": "Right Claw V2",
+    "category": "Claw",
+    "imageUrl": "images/cad/right_claw_v2.jpg",
+    "description": "Наша правая клешня для ауттейка с астанинской регионалки. она использует шевронную шестеренку для предотвращения прскальзывания. она крепится на серво арм от рев или болт м4 по центру.",
+    "downloadLink": "files/ClawV2-Right.SLDPRT"
+  },
+  {
+    "title": "Left Claw V2",
+    "category": "Claw",
+    "imageUrl": "images/cad/left_claw_v2.jpg",
+    "description": "Наша левая клешня для ауттейка с астанинской регионалки. она использует шевронную шестеренку для предотвращения прскальзывания. она крепится на серво арм от рев или болт м4 по центру.",
+    "downloadLink": "files/ClawV2-Left.SLDPRT"
+  },
+  {
+    "title": "Claw Holder V2",
+    "category": "Claw",
+    "imageUrl": "images/cad/claw_holder.jpg",
+    "description": "Наше крепление для клешни для ауттейка с астанинской регионалки. оно устанавливается на рев крепление для серво. модель укреплена для предотващения прощелкивания шестерен на клешне.",
+    "downloadLink": "files/ClawHolderV2.SLDPRT"
+  },
+  {
+    "title": "Block Pulley V5",
+    "category": "Механические компоненты",
+    "imageUrl": "images/cad/block_pulley.jpg",
+    "description": "Наша катушка для лески. мы использовали ее весь сезон. внутрь вставляется блок для предотвращения прокручивания катушки. благодаря ней можно натягивать леску не снимая всю ось с мотором. она расчитана на ось рев (5 мм)",
+    "downloadLink": "files/BlockPulleyV5.SLDPRT"
+  },
+  {
+    "title": "Vertical Lift Synchronizer V8",
+    "category": "Lift",
+    "imageUrl": "images/cad/vertical_lift_synchronizer.jpg",
+    "description": "Наш синхронизатор для лифта с алматинской регионалки. он предотвращал искревление лифта, устанавливался на мисуми. к нему крепились лески, опускавшие лифт и кор хекс поднимавший руку.",
+    "downloadLink": "files/VLiftSynchronizerV8.SLDPRT"
+  },
+  {
+    "title": "Claw V3 Base",
+    "category": "Claw",
+    "imageUrl": "images/cad/claw_v3_base.jpg",
+    "description": "База нашей клешни для интейка с алматинской регионалки. она крепилась на гобилда серво хаб и подшипник. в него вставлялись клешни.",
+    "downloadLink": "files/ClawV3-Base.SLDPRT"
+  },
+  {
+    "title": "Claw V3 Right",
+    "category": "Claw",
+    "imageUrl": "images/cad/claw_right_v3.jpg",
+    "description": "Наша правая клешня для интейка с алматинской регионалки. она короткая и высокая, что обеспечивало крепкое удерживание спесимена. Она крепится к серво хабу саморезами.",
+    "downloadLink": "files/ClawV3-Right.sldprt"
+  },
+  {
+    "title": "Claw V3 Left",
+    "category": "Claw",
+    "imageUrl": "images/cad/claw_left_v3.jpg",
+    "description": "Наша левая клешня для интейка с алматинской регионалки. она короткая и высокая, что обеспечивало крепкое удерживание спесимена.",
+    "downloadLink": "files/ClawV3-Left.sldprt"
+  },
+  {
+    "title": "Claw V3 Lid",
+    "category": "Claw",
+    "imageUrl": "images/cad/claw_v3_base2.jpg",
+    "description": "Крышка нашей клешни для интейка к ней на саморезы крепился серво открывающий клешню.",
+    "downloadLink": "files/ClawV3-Lid.sldprt"
+  },
+  {
+    "title": "Claw V3 Rotator",
+    "category": "Крепления",
+    "imageUrl": "images/cad/claw_v3_rotator.jpg",
+    "description": "Наше крепление клешни для интейка с алматинской регионалки. она крепилась к руке из гобилда балок расстояние между которыми - 32 мм. она вращала клешню с помощью сервопривода.",
+    "downloadLink": "files/ClawV3-Rotator.sldprt"
+  }
+]

@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="shortcut icon" href="favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Приводы FTC роботов</title>
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .site-navbar {
+      position: relative;
+      background-color: #fff;
+    }
+
+    .site-navbar:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      opacity: 0.9;
+      background: #000;
+      z-index: -1;
+    }
+
+    .post-entry-1 {
+      transition: transform 0.3s, box-shadow 0.3s;
+      margin-bottom: 30px;
+      background-color: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+
+    .post-entry-1:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .content-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .blog-content {
+      flex: 2;
+      padding-right: 20px;
+      line-height: 1.6;
+    }
+
+    h2 {
+      font-size: 36px;
+      color: #333;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    h3 {
+      font-size: 28px;
+      color: #ff6600;
+      margin-top: 30px;
+    }
+
+    p, ul {
+      font-size: 18px;
+      color: #555;
+    }
+
+    ul {
+      padding-left: 20px;
+      list-style-type: square;
+    }
+
+    blockquote {
+      background: #f9f9f9;
+      border-left: 5px solid #ff6600;
+      padding: 15px;
+      margin: 20px 0;
+      font-style: italic;
+      color: #777;
+    }
+
+    .author-box {
+      flex: 1;
+      background-color: #f9f9f9;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      height: 250px;
+    }
+
+    .author-box img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin-bottom: 15px;
+    }
+
+    .author-box h4 {
+      color: #333;
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .author-box p {
+      font-size: 16px;
+      color: #777;
+      font-style: italic;
+    }
+
+    .section-bg {
+      background-color: #f1f1f1;
+      padding: 50px 0;
+    }
+
+    /* Убрано выделение при наведении */
+    /* li:hover {
+      color: #ff6600;
+      cursor: pointer;
+      font-weight: bold;
+      transition: color 0.3s;
+    } */
+
+    /* Или, если хотите оставить курсор pointer: */
+    li:hover {
+      cursor: pointer;
+    }
+
+.image-frame {
+  width: 50%;
+  max-width: 600px;
+  border-radius: 10px; 
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); 
+  display: block;
+  margin: 0 auto; 
+}
+
+
+figcaption {
+  font-size: 16px;
+  color: #777;
+  text-align: center; 
+  margin-top: 10px;
+  font-style: italic; 
+}
+     @media (max-width: 768px) {
+             .blog-content {
+             padding-right: 0; 
+         }
+            .image-frame {
+            width: 100%; 
+            max-width: 100%;
+        }
+            h2 {
+            font-size: 28px;
+        } 
+            .content-wrapper {
+            flex-direction: column; 
+        }
+            .author-box {
+            width: 100%;
+            margin-top: 20px;
+        }
+        }
+
+  </style>
+</head>
+
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+  <div class="site-wrap" id="home-section">
+
+    <header class="site-navbar site-navbar-target" role="banner">
+      <div class="container">
+        <div class="row align-items-center position-relative">
+          <div class="col-lg-4">
+            <nav class="site-navigation text-right ml-auto" role="navigation">
+              <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
+                <li><a href="index.html" class="nav-link">Главная</a></li>
+                <li><a href="technology.html" class="nav-link">Контент</a></li>
+                <li><a href="cad.html" class="nav-link">CAD models</a></li>
+              </ul>
+            </nav>
+          </div>
+          <div class="col-lg-4 text-center">
+            <div class="site-logo">
+              <a href="index.html">Robotek Rage</a>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <nav class="site-navigation text-left mr-auto" role="navigation">
+              <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
+                <li><a href="about.html" class="nav-link">О нас</a></li>
+                <li><a href="blog.html" class="nav-link">Блог</a></li>
+                <li><a href="contact.html" class="nav-link">Контакты</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="site-section section-bg">
+      <div class="container">
+        <div class="content-wrapper">
+          <div class="blog-content">
+            <h2>Приводы FTC роботов</h2>
+            <p>Этот раздел охватывает сердце любого робота — привод. Назначение привода — обеспечить движение робота, поэтому он является критически важным элементом всей конструкции. Если привод не работает, робот в целом тоже не будет функционировать. В FTC существует множество возможных типов приводов, которые мы рассмотрим в этом руководстве. Приводы делятся на два основных типа: танковый (skid-steer) и голономный.</p>
+
+            <h3>Типы приводов</h3>
+
+            <h4>Танковый привод (Tank Drivetrain)</h4>
+            <p>Танковый привод в основном использует колёса с высоким сцеплением и не может двигаться вбок (страфить). Для изменения направления танковый привод либо поворачивает колёса с одной стороны в противоположную сторону от другой (разворачивая робота), либо изменяет скорость одной стороны относительно другой, заставляя робота двигаться по дуге. Танковые приводы отдают приоритет сцеплению и ускорению перед манёвренностью, что позволяет им преодолевать препятствия и играть в защите. Они относительно просты в сборке, но при этом остаются конкурентоспособными на высоком уровне.</p>
+
+            <h4>Голономный привод (Holonomic Drivetrain)</h4>
+            <p>В отличие от танкового привода, голономный привод может двигаться вбок благодаря использованию колес типа механум или омни. Эти колёса имеют специальные ролики, позволяющие осуществлять страфинг. Голономные приводы придают большее значение манёвренности, чем сцеплению. Они устраняют необходимость поворотов, требуемых танковому приводу. Однако такие приводы уязвимы к защите со стороны других роботов и могут испытывать проблемы при значительном весе. Несмотря на это, голономные приводы доказали свою эффективность и часто встречаются среди лучших команд мира.</p>
+
+            <h3>Выбор привода</h3>
+            <p>При создании любого механизма командам необходимо определить основные требования и желаемые характеристики. Вот некоторые важные параметры при выборе привода:</p>
+
+            <h4>Манёвренность</h4>
+            <p>На манёвренность влияет множество факторов: максимальная скорость, ускорение, радиус и скорость поворота, а также способность к страфингу. Радиус поворота — часто игнорируемая, но очень важная характеристика. В общем случае, хороший привод должен иметь свободную скорость (без нагрузки) в диапазоне 5–6,5 км/ч.</p>
+
+            <h4>Количество моторов и передаточное отношение</h4>
+            <p>Новички часто пытаются использовать только два мотора на привод. Это возможно, но не рекомендуется, так как все конкурентоспособные команды используют минимум 4 мотора. Другая частая ошибка — слишком медленный привод. Хотя продвинутые команды могут уделять внимание защите, в целом основными факторами успешного привода являются маневренность и скорость.</p>
+            <p>Оптимальным передаточным отношением для привода в FTC считается 12:1 – 20:1. Популярным выбором является 12:1. Это обеспечивает баланс между ускорением и высокой максимальной скоростью.</p>
+
+            <h4>Способы передачи мощности</h4>
+            <p>Существует четыре основных способа передачи мощности:</p>
+            <ul>
+              <li>Прямой привод (direct drive)</li>
+              <li>Цепь (chain)</li>
+              <li>Шестерни (gear)</li>
+              <li>Ремень (belt)</li>
+            </ul>
+            <p>При использовании цепей необходимо предусмотреть натяжители для поддержания правильного натяжения. Шестерни немного проще и могут быть отличным решением, особенно при использовании алюминиевого профиля.</p>
+
+            <h3>Опции приводов</h3>
+            <h4>Танковые (Skid-Steer) приводы</h4>
+            <ul>
+              <li>2-колёсный привод (Pushbot Drive)</li>
+              <li>4-колёсный привод</li>
+              <li>6-колёсный привод (6WD)</li>
+              <li>Гусеничный привод (Tread Drive)</li>
+            </ul>
+
+            <h4>Голономные приводы</h4>
+            <ul>
+              <li>Mecanum Drive</li>
+              <li>X-Drive</li>
+              <li>H-Drive</li>
+            </ul>
+
+            <h3>Глоссарий</h3>
+            <ul>
+              <li><b>Омни-колёса</b> — это особый тип колёс, предназначенный для манёвренности и страфинга. Они имеют резиновые ролики, расположенные перпендикулярно плоскости колеса. Они используются в X-Drive, а также как вспомогательные колёса в танковых приводах.</li>
+              <li><b>Механум</b> — является разновидностью омни-колеса, но его ролики расположены под углом 45 градусов.</li>
+              <li><b>Тяговое колесо (Traction Wheel)</b> — обеспечивает максимальное сцепление с поверхностью благодаря резиновому покрытию и широкой контактной площадке.</li>
+              <li><b>Страфинг (Strafing)</b> — это боковое движение робота. Он возможен только при использовании омни- или механум-колёс.</li>
+              <li><b>Параллельнопластинчатый привод (Parallel Plate Drivetrain)</b> — привод, в котором трансмиссия и колёса располагаются между двумя пластинами, обеспечивающими жёсткость конструкции.</li>
+            </ul>
+
+          </div>
+          <div class="author-box">
+            <img src="images/ans.jpg" alt="Автор">
+            <h4>Автор: Мусрепов Дастан</h4>
+            <p>Участник Robotek Rage</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row justify-content-between">
+        <div class="col-lg-4">
+          <div class="widget">
+            <h3>О нас</h3>
+            <p>Мы — команда Robotek Rage, занимаемся робототехникой и стремимся к инновациям и победам в международных соревнованиях.</p>
+          </div>
+          <div class="widget">
+            <h3>Связаться с нами</h3>
+            <ul class="social list-unstyled">
+              <li><a href="#"><span class="icon-facebook"></span></a></li>
+              <li><a href="#"><span class="icon-twitter"></span></a></li>
+              <li><a href="#"><span class="icon-instagram"></span></a></li>
+              <li><a href="#"><span class="icon-linkedin"></span></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="widget">
+            <h3>Навигация</h3>
+            <ul class="links list-unstyled">
+              <li><a href="index.html">Main</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="technology.html">Сontent</a></li>
+              <li><a href="cad.html">Cad models</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="author" content="Untree.co">
+  <link rel="shortcut icon" href="favicon.png">
+  <meta name="description" content="О нас - команда Robotek Rage">
+  <meta name="keywords" content="робототехника, команда, инновации, FIRST, VEX">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="fonts/icomoon/style.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+  <link rel="stylesheet" href="css/aos.css">
+  <link rel="stylesheet" href="css/style.css">
+  <title>О нас | Команда Robotek Rage</title>
+
+  <style>
+    .site-navbar {
+      position: relative;
+      background-color: #fff;
+    }
+
+    .site-navbar:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      opacity: 0.9;
+      background: #000; 
+      z-index: -1;
+    }
+
+    .post-entry-1 {
+      transition: transform 0.3s, box-shadow 0.3s;
+      margin-bottom: 30px;
+      background-color: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+
+    .post-entry-1:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .post-entry-1 img {
+      width: 100%;
+      height: auto;
+      border-bottom: 2px solid #f1f1f1;
+    }
+
+    .post-entry-1-contents {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .meta {
+      color: #28a745;
+      font-size: 14px;
+      font-weight: 500;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .post-entry-1 h2 {
+      font-size: 18px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .download-btn {
+      display: inline-block;
+      background: #007bff;
+      color: white;
+      padding: 10px 25px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 14px;
+      margin-top: 15px;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .download-btn:hover {
+      background: #0056b3;
+      transform: scale(1.05);
+    }
+
+    /* Модальное окно */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: rgb(0,0,0);
+      background-color: rgba(0,0,0,0.4);
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 10% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 40%;
+      display: flex; 
+      flex-direction: row-reverse;  
+      align-items: center;
+    }
+
+    .modal-content img {
+      max-width: 40%; 
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .modal-text {
+      margin-right: 100px;  
+      flex-grow: 1;
+      text-align: left;
+      padding-right: 30px; 
+    }
+
+    .modal-text h3 {
+      font-size: 24px;
+      color: #333;
+      padding-left: 30px;
+    }
+
+    .modal-text p {
+      font-size: 16px;
+      margin-bottom: 20px;
+      padding-left: 30px;
+
+    }
+
+    .modal-text .download-btn {
+      margin-top: 20px;
+      margin-left: 20px;
+
+    }
+
+    .close {
+      color: #aaa;
+      font-size: 28px;
+      font-weight: bold;
+      position: absolute;
+      top: 10px;
+      right: 25px;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    body.modal-open {
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+  <div class="site-wrap" id="home-section">
+
+    <header class="site-navbar site-navbar-target" role="banner">
+      <div class="container">
+        <div class="row align-items-center position-relative">
+          <div class="col-lg-4">
+            <nav class="site-navigation text-right ml-auto" role="navigation">
+              <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
+                <li><a href="index.html" class="nav-link">Главная</a></li>
+                <li><a href="technology.html" class="nav-link">Контент</a></li>
+                <li><a href="careers.html" class="nav-link">CAD models</a></li>
+              </ul>
+            </nav>
+          </div>
+          <div class="col-lg-4 text-center">
+            <div class="site-logo">
+              <a href="index.html">Robotek Rage</a>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <nav class="site-navigation text-left mr-auto" role="navigation">
+              <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
+                <li><a href="about.html" class="nav-link">О нас</a></li>
+                <li><a href="blog.html" class="nav-link">Блог</a></li>
+                <li><a href="contact.html" class="nav-link">Контакты</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="site-section bg-light">
+      <div class="container">
+        <div class="row align-items-stretch" id="cad-models-grid">
+        </div>
+      </div>
+    </div>
+
+    <div id="modelModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="modal-text">
+          <h3 id="modalTitle"></h3>
+          <p id="modalDescription"></p>
+          <a href="#" id="modalDownloadBtn" class="download-btn">Скачать</a>
+        </div>
+        <img src="" alt="Model Image" id="modalImage">
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col-lg-4">
+            <div class="widget">
+              <h3>О нас</h3>
+              <p>Мы — команда Robotek Rage, занимаемся робототехникой и стремимся к инновациям и победам в международных соревнованиях.</p>
+            </div>
+            <div class="widget">
+              <h3>Связаться с нами</h3>
+              <ul class="social list-unstyled">
+                <li><a href="#"><span class="icon-facebook"></span></a></li>
+                <li><a href="#"><span class="icon-twitter"></span></a></li>
+                <li><a href="#"><span class="icon-instagram"></span></a></li>
+                <li><a href="#"><span class="icon-linkedin"></span></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="widget">
+              <h3>Навигация</h3>
+              <ul class="links list-unstyled">
+                <li><a href="index.html">Main</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="technology.html">Сontent</a></li>
+                <li><a href="careers.html">Cad models</a></li>
+                <li><a href="contact.html">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.sticky.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+  <script src="js/jquery.fancybox.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/main.js"></script>
+
+  <script>
+    const models = [];
+
+    for (let i = 0; i < 20; i++) {
+      models.push({
+        title: `Модель ${i + 1}`,
+        category: "Общая категория",
+        imageUrl: "https://via.placeholder.com/300x200",
+        description: "Общее описание модели. Все карточки имеют одно описание.",
+        downloadLink: "#"
+      });
+    }
+
+    const grid = document.getElementById('cad-models-grid');
+    models.forEach((model, index) => {
+      grid.innerHTML += `
+        <div class="col-lg-3 col-md-6">
+          <div class="post-entry-1" data-index="${index}">
+            <a href="#">
+              <img src="${model.imageUrl}" alt="${model.title}" class="img-fluid">
+            </a>
+            <div class="post-entry-1-contents">
+              <span class="meta">${model.category}</span>
+              <h2><a href="#">${model.title}</a></h2>
+              <a href="#" class="download-btn">Скачать</a>
+            </div>
+          </div>
+        </div>
+      `;
+    });
+
+    const modal = document.getElementById("modelModal");
+    const closeModal = document.querySelector(".close");
+
+    grid.addEventListener("click", function(event) {
+      const card = event.target.closest('.post-entry-1');
+      if (card) {
+        const index = card.getAttribute('data-index');
+        const model = models[index];
+        
+        document.getElementById("modalTitle").innerText = model.title;
+        document.getElementById("modalDescription").innerText = model.description;
+        document.getElementById("modalImage").src = model.imageUrl;
+        document.getElementById("modalDownloadBtn").href = model.downloadLink;
+
+        modal.style.display = "block";
+        document.body.classList.add("modal-open");  
+      }
+    });
+
+    closeModal.onclick = function() {
+      modal.style.display = "none";
+      document.body.classList.remove("modal-open");  
+    }
+
+    window.onclick = function(event) {
+      if (event.target === modal) {
+        modal.style.display = "none";
+        document.body.classList.remove("modal-open"); 
+      }
+    }
+  </script>
+</body>
+</html>

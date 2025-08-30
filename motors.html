@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Моторы и Сервоприводы в FTC</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .site-navbar {
+            position: relative;
+            background-color: #fff;
+        }
+
+        .site-navbar:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.9;
+            background: #000;
+            z-index: -1;
+        }
+
+        .post-entry-1 {
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-bottom: 30px;
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .post-entry-1:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .content-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .blog-content {
+            flex: 2;
+            padding-right: 20px;
+            line-height: 1.6;
+        }
+
+        h2 {
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        h3 {
+            font-size: 28px;
+            color: #ff6600;
+            margin-top: 30px;
+        }
+
+        p, ul {
+            font-size: 18px;
+            color: #555;
+        }
+
+        ul {
+            padding-left: 20px;
+            list-style-type: square;
+        }
+
+        blockquote {
+            background: #f9f9f9;
+            border-left: 5px solid #ff6600;
+            padding: 15px;
+            margin: 20px 0;
+            font-style: italic;
+            color: #777;
+        }
+
+        .author-box {
+            flex: 1;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            height: 250px;
+        }
+
+        .author-box img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+
+        .author-box h4 {
+            color: #333;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .author-box p {
+            font-size: 16px;
+            color: #777;
+            font-style: italic;
+        }
+
+        .section-bg {
+            background-color: #f1f1f1;
+            padding: 50px 0;
+        }
+
+        li:hover {
+            cursor: pointer;
+        }
+
+        .image-frame {
+            max-width: 600px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+        }
+
+        figcaption {
+            font-size: 16px;
+            color: #777;
+            text-align: center;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .comparison-table th, .comparison-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .comparison-table th {
+            background-color: #f5f5f5;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .comparison-table td:first-child {
+            font-weight: bold;
+        }
+
+        .comparison-table ul {
+            padding-left: 20px;
+            list-style-type: disc;
+        }
+
+        .motor-section {
+            margin-bottom: 30px;
+        }
+             @media (max-width: 768px) {
+             .blog-content {
+             padding-right: 0; 
+         }
+            .image-frame {
+            width: 100%; 
+            max-width: 100%;
+        }
+            h2 {
+            font-size: 28px;
+        } 
+            .content-wrapper {
+            flex-direction: column; 
+        }
+            .author-box {
+            width: 100%;
+            margin-top: 20px;
+        }
+        }
+    </style>
+</head>
+
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+<div class="site-wrap" id="home-section">
+
+    <header class="site-navbar site-navbar-target" role="banner">
+        <div class="container">
+            <div class="row align-items-center position-relative">
+                <div class="col-lg-4">
+                    <nav class="site-navigation text-right ml-auto" role="navigation">
+                        <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
+                            <li><a href="index.html" class="nav-link">Главная</a></li>
+                            <li><a href="technology.html" class="nav-link">Контент</a></li>
+                            <li><a href="cad.html" class="nav-link">CAD models</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <div class="site-logo">
+                        <a href="index.html">Robotek Rage</a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <nav class="site-navigation text-left mr-auto" role="navigation">
+                        <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
+                            <li><a href="about.html" class="nav-link">О нас</a></li>
+                            <li><a href="blog.html">Блог</a></li>
+                            <li><a href="contact.html">Контакты</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="site-section section-bg">
+        <div class="container">
+            <div class="content-wrapper">
+                <div class="blog-content">
+                    <h2>Моторы и Сервоприводы в FTC</h2>
+                    <p>Выбор правильных моторов и сервоприводов критически важен для создания эффективного робота FTC. DC моторы обеспечивают вращательное движение для привода, подъемных механизмов и интейков, в то время как сервоприводы позволяют точно позиционировать элементы, например, клешни или манипуляторы. Рассмотрим основные типы моторов и сервоприводов, используемых в FTC, и их применение.</p>
+
+                    <h3>1. DC Моторы</h3>
+                    <p>DC моторы являются основными рабочими лошадками в роботе FTC. Они обеспечивают непрерывное вращение и используются для выполнения большинства задач, требующих движения. Важно учитывать крутящий момент, скорость и точность мотора при выборе для конкретного применения.</p>
+
+                    <div class="motor-section">
+                        <h4>REV HD Hex Motor</h4>
+                        <br>
+                        <img src="images/motor.png" alt="REV HD Hex Motor" class="image-frame">
+                        <br><br>
+                        <p>Универсальный мотор, часто используемый начинающими командами для привода колес.</p>
+                        <h5>Плюсы:</h5>
+                        <ul>
+                            <li>Передачи удобно меняются</li>
+                            <li>Можно устанавливать как параллельно, так и перпендикулярно благодаря Gearbox’у на 90 градусов</li>
+                            <li>Есть в REV Starter Kit</li>
+                        </ul>
+                        <h5>Минусы:</h5>
+                        <ul>
+                            <li>Имеет больше люфта, чем goBILDA Yellow Jacket Motor.</li>
+                        </ul>
+                    </div>
+
+                    <div class="motor-section">
+                        <h4>REV Core Hex Motor</h4>
+                        <br>
+                        <img src="images/motor2.png" alt="REV Core Hex Motor" class="image-frame">
+                        <br><br>
+                        <p>Распространен для лифта у начинающих команд.</p>
+                        <h5>Плюсы:</h5>
+                        <ul>
+                            <li>Компактный</li>
+                            <li>Имеет достаточно крутящего момента для большинства задач</li>
+                            <li>Есть в REV Starter Kit</li>
+                        </ul>
+                        <h5>Минусы:</h5>
+                        <ul>
+                            <li>Неточный</li>
+                            <li>На него нельзя установить передачи от HD Hex мотора.</li>
+                        </ul>
+                    </div>
+
+                    <div class="motor-section">
+                        <h4>Gobilda Yellow Jacket Motors</h4>
+                        <br>
+                        <img src="images/motor5.png" alt="Gobilda Yellow Jacket Motors" class="image-frame">
+                        <br><br>
+                        <p>Распространен среди более опытных команд.</p>
+                        <h5>Плюсы:</h5>
+                        <ul>
+                            <li>Самые точные</li>
+                        </ul>
+                        <h5>Минусы:</h5>
+                        <ul>
+                            <li>Несъемная ось</li>
+                            <li>Тяжело менять передачи</li>
+                            <li>Стоит дороже, чем HD Hex</li>
+                        </ul>
+                    </div>
+
+                    <h3>2. Сервоприводы</h3>
+                    <br>
+                    <img src="images/motor3.png" alt="Gobilda Yellow Jacket Motors" class="image-frame">
+                    <br><br>
+                    <p>Сервоприводы используются для точного позиционирования и управления углом поворота. Они идеально подходят для задач, где требуется высокая точность, таких как управление клешней, поворот камеры или активация замков. Существует два основных типа сервоприводов:</p>
+                    <ul>
+                        <li><b>Обычные сервоприводы</b> — обеспечивают вращение в пределах 180 градусов.</li>
+                        <li><b>Континуальные сервоприводы</b> — могут вращаться на 360 градусов или более, что делает их похожими на DC моторы (часто используются для интейков).</li>
+                    </ul>
+
+                    <h4>Популярные модели сервоприводов:</h4>
+                    <ul>
+                        <li><b>REV Smart Servo</b> — программируемый сервопривод, который позволяет задавать точные углы вращения.</li>
+                        <li><b>Gobilda Servo Torque/Speed/Super speed</b> — похож на REV, но можно выбирать скорость.</li>
+                        <br>
+                        <img src="images/motor.4png.png" alt="Gobilda Yellow Jacket Motors" class="image-frame">
+                        <li><b>AXON Micro/Mini/Max</b> — Мощные и дорогие сервоприводы (аналог - AFRC).</li>
+                    </ul>
+                    <br>
+                    <img src="images/motor6.png" alt="Gobilda Yellow Jacket Motors" class="image-frame">
+                    <br><br>
+                    <h4>Основные параметры сервоприводов:</h4>
+                    <br>
+                    <img src="images/motor7.png" alt="Gobilda Yellow Jacket Motors" class="image-frame">
+                    <br><br>
+                    <ul>
+                        <li><b>Крутящий момент</b> — важен для удержания или перемещения тяжелых объектов (рука обычно тяжелая из-за ее длины).</li>
+                        <li><b>Угол поворота</b> — определяет, насколько сервопривод может повернуться от начального положения.</li>
+                        <li><b>Скорость</b> — время, за которое сервопривод совершает полный поворот.</li>
+                    </ul>
+
+                    <h4>Советы по использованию сервоприводов:</h4>
+                    <ul>
+                        <li>Используйте Servo Hub или Servo Power Module: Они нужны, чтобы повысить скорость и крутящий момент сервоприводов. Они увеличивают напряжение с 4.8 Вольт до 6 или 7.4 Вольт. Например, крутящий момент сервопривода goBILDA Torque Servo с Servo Hub увеличивается с 17.2 кг*см до 25.2 кг*см.</li>
+                        <br>
+                        <img src="images/motor8.png" alt="Gobilda Yellow Jacket Motors" class="image-frame">
+                        <br><br>
+                        <li>Используйте сервоблоки: сервоприводы очень хрупкие, особенно легко ломается внутренняя ось от боковых нагрузок. Сервоблок берет на себя боковую нагрузку, защищая ось сервопривода.</li>
+                        <br>
+                        <img src="images/motor9.png" alt="Gobilda Yellow Jacket Motors" class="image-frame">
+                        <br><br>
+                    </ul>
+
+                    <h3>Выбор моторов для разных задач</h3>
+                    <p>Правильный выбор мотора или сервопривода зависит от конкретной задачи, которую необходимо решить. Рассмотрим несколько типичных сценариев и рекомендации по выбору:</p>
+
+                    <ul>
+                        <li><b>Привод колес</b>: Для привода лучше выбирать моторы REV HD Hex с передачей 12:1 и goBILDA Yellow Jacket 435 RPM (для привода лучше выбирать моторы с короткой осью, чтобы сделать компактного робота).</li>
+                        <li><b>Подъемные механизмы</b>: Моторы для лифта стоит выбирать в зависимости от веса лифта. Зачастую Core Hex оказывается слишком медленным для лифта, но его можно использовать, если хотите сделать хенг.</li>
+                        <li><b>Поднимание/опускание руки</b>: Можно поставить 1 или 2 сервопривода или Core Hex.</li>
+                        <li><b>Интейк</b>: Сервоприводы идеальны для клешни, так как они легкие и имеют достаточно крутящего момента. На активном интейке можно использовать континуальные сервоприводы (например goBILDA Speed/Super Speed) или моторы с малым передаточным числом.</li>
+                    </ul>
+
+                </div>
+                <div class="author-box">
+                    <img src="images/dastan.jpg" alt="Автор">
+                    <h4>Автор: Мусурепов Дастан</h4>
+                    <p>Участник Robotek Rage</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="row justify-content-between">
+            <div class="col-lg-4">
+                <div class="widget">
+                    <h3>О нас</h3>
+                    <p>Мы — команда Robotek Rage, занимаемся робототехникой и стремимся к инновациям и победам в международных соревнованиях.</p>
+                </div>
+                <div class="widget">
+                    <h3>Связаться с нами</h3>
+                    <ul class="social list-unstyled">
+                        <li><a href="#"><span class="icon-facebook"></span></a></li>
+                        <li><a href="#"><span class="icon-twitter"></span></a></li>
+                        <li><a href="#"><span class="icon-instagram"></span></a></li>
+                        <li><a href="#"><span class="icon-linkedin"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="widget">
+                    <h3>Навигация</h3>
+                    <ul class="links list-unstyled">
+                        <li><a href="index.html">Main</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="technology.html">Сontent</a></li>
+                        <li><a href="cad.html">Cad models</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</div>
+
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

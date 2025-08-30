@@ -1,0 +1,501 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Выбор Линейных Слайдеров для FTC</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .site-navbar {
+            position: relative;
+            background-color: #fff;
+        }
+
+        .site-navbar:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.9;
+            background: #000;
+            z-index: -1;
+        }
+
+        .post-entry-1 {
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-bottom: 30px;
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .post-entry-1:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .content-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .blog-content {
+          flex: none; 
+          width: 66.66%; 
+          padding-right: 20px;
+          line-height: 1.6;
+        }
+
+        h2 {
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        h3 {
+            font-size: 28px;
+            color: #ff6600;
+            margin-top: 30px;
+        }
+
+        p, ul {
+            font-size: 18px;
+            color: #555;
+        }
+
+        ul {
+            padding-left: 20px;
+            list-style-type: square;
+        }
+
+        blockquote {
+            background: #f9f9f9;
+            border-left: 5px solid #ff6600;
+            padding: 15px;
+            margin: 20px 0;
+            font-style: italic;
+            color: #777;
+        }
+
+        .author-box {
+            flex: 1;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            height: 250px;
+        }
+
+        .author-box img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+
+        .author-box h4 {
+            color: #333;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .author-box p {
+            font-size: 16px;
+            color: #777;
+            font-style: italic;
+        }
+
+        .section-bg {
+            background-color: #f1f1f1;
+            padding: 50px 0;
+        }
+
+        li:hover {
+            cursor: pointer;
+        }
+
+        .image-frame {
+            max-width: 600px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+        }
+
+        figcaption {
+            font-size: 16px;
+            color: #777;
+            text-align: center;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .comparison-table th, .comparison-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .comparison-table th {
+            background-color: #f5f5f5;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .comparison-table td:first-child {
+            font-weight: bold;
+        }
+
+        .comparison-table td:nth-child(7) { 
+            text-align: center;
+        }
+
+        .slider-description {
+            margin-bottom: 20px;
+        }
+             @media (max-width: 768px) {
+             .blog-content {
+             padding-right: 0; 
+         }
+            .image-frame {
+            width: 100%; 
+            max-width: 100%;
+        }
+            h2 {
+            font-size: 28px;
+        } 
+            .content-wrapper {
+            flex-direction: column; 
+        }
+            .author-box {
+            width: 100%;
+            margin-top: 20px;
+        }
+        }
+    </style>
+</head>
+
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+<div class="site-wrap" id="home-section">
+
+    <header class="site-navbar site-navbar-target" role="banner">
+        <div class="container">
+            <div class="row align-items-center position-relative">
+                <div class="col-lg-4">
+                    <nav class="site-navigation text-right ml-auto" role="navigation">
+                        <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
+                            <li><a href="index.html" class="nav-link">Главная</a></li>
+                            <li><a href="technology.html" class="nav-link">Контент</a></li>
+                            <li><a href="cad.html" class="nav-link">CAD models</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <div class="site-logo">
+                        <a href="index.html">Robotek Rage</a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <nav class="site-navigation text-left mr-auto" role="navigation">
+                        <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
+                            <li><a href="about.html" class="nav-link">О нас</a></li>
+                            <li><a href="blog.html">Блог</a></li>
+                            <li><a href="contact.html">Контакты</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="site-section section-bg">
+        <div class="container">
+            <div class="content-wrapper">
+                <div class="blog-content">
+                    <h2>Выбор Линейных Слайдеров для FTC</h2>
+                    <p>Линейные слайдеры играют важную роль в конструкции робота, обеспечивая выдвижение и подъем различных механизмов. Ниже рассмотрены основные типы слайдеров, доступные для команд FTC, с их плюсами и минусами. Выбор подходящего слайдера зависит от требований к грузоподъемности, точности, скорости и доступного бюджета.</p>
+
+                    <div class="slider-description">
+                        <h3>REV Linear Motion Kit v2</h3>
+                        <br>
+                        <img src="images/sliders6.png" alt="MISUMI SAR Linear Slider" class="image-frame">
+                        <br><br>
+                        <p>Использует экструдеры как направляющие и пластиковые каретки на подшипниках. Часто используется начинающими командами.</p>
+                        <h4>Плюсы:</h4>
+                        <ul>
+                            <li>Дешевизна</li>
+                            <li>Прочность</li>
+                            <li>Хорошая совместимость с другими REV-компонентами</li>
+                        </ul>
+                        <h4>Минусы:</h4>
+                        <ul>
+                            <li>Много люфта</li>
+                            <li>Много трения</li>
+                            <li>Большой вес</li>
+                            <li>Сложность сборки</li>
+                        </ul>
+                    </div>
+
+                    <div class="slider-description">
+                        <h3>MISUMI SAR220 / SAR230 / SAR320 / SAR330</h3>
+                        <br>
+                        <img src="images/sliders.png" alt="MISUMI SAR Linear Slider" class="image-frame">
+                        <br><br>
+                        <p>Компактные и легкие направляющие с низким коэффициентом трения и плавным ходом.</p>
+                        <h4>Плюсы:</h4>
+                        <ul>
+                            <li>Точность</li>
+                            <li>Высокая скорость работы</li>
+                            <li>Малый вес</li>
+                            <li>Компактность</li>
+                            <li>Мало люфта</li>
+                        </ul>
+                        <h4>Минусы:</h4>
+                        <ul>
+                            <li>Сложность закрепления</li>
+                            <li>Ширина</li>
+                            <li>Высокая цена</li>
+                        </ul>
+                    </div>
+
+                    <div class="slider-description">
+                        <h3>goBILDA Viper Slide</h3>
+                        <br>
+                        <img src="images/sliders2.png" alt="goBILDA Viper Slide" class="image-frame">
+                        <br><br>
+                        <p>Телескопическая система с роликами, обеспечивающая плавное движение. Доступна в различных конфигурациях, подходит для вертикальных и горизонтальных применений.</p>
+                        <h4>Плюсы:</h4>
+                        <ul>
+                            <li>Плавное движение</li>
+                            <li>Высокая модульность</li>
+                            <li>Прочность конструкции</li>
+                        </ul>
+                        <h4>Минусы:</h4>
+                        <ul>
+                            <li>Требует точной сборки</li>
+                            <li>Возможен люфт при сильной нагрузке</li>
+                        </ul>
+                    </div>
+
+                    <div class="slider-description">
+                        <h3>goBILDA Linear Actuator Kit</h3>
+                        <br>
+                        <img src="images/sliders3.png" alt="goBILDA Linear Actuator Kit" class="image-frame">
+                        <br><br>
+                        <p>Этот комплект представляет собой компактный линейный привод с электромотором и встроенной системой передачи усилия.</p>
+                        <h4>Плюсы:</h4>
+                        <ul>
+                            <li>Высокая точность</li>
+                        </ul>
+                        <h4>Минусы:</h4>
+                        <ul>
+                            <li>Невозможно соединять несколько</li>
+                            <li>Много трения</li>
+                            <li>Большой вес</li>
+                            <li>Ограниченная нагрузочная способность</li>
+                        </ul>
+                    </div>
+
+                    <div class="slider-description">
+                        <h3>Thrifty Telescoping Tube Kit</h3>
+                        <br>
+                        <img src="images/sliders4.png" alt="Thrifty Telescoping Tube Kit" class="image-frame">
+                        <br><br>
+                        <p>Комплект из телескопических алюминиевых труб с пластиковыми направляющими.</p>
+                        <h4>Плюсы:</h4>
+                        <ul>
+                            <li>Легкость</li>
+                            <li>Изменяемая длина (можно заменить трубы)</li>
+                            <li>Прочность</li>
+                        </ul>
+                        <h4>Минусы:</h4>
+                        <ul>
+                            <li>Тяжело установить</li>
+                            <li>Слишком большой</li>
+                            <li>Высокая цена</li>
+                        </ul>
+                    </div>
+
+                    <div class="slider-description">
+                        <h3>Мебельные слайдеры</h3>
+                        <br>
+                        <img src="images/sliders5.png" alt="Мебельные слайдеры" class="image-frame">
+                        <br><br>
+                        <p>Доступный вариант из мебельной фурнитуры.</p>
+                        <h4>Плюсы:</h4>
+                        <ul>
+                            <li>Дешевизна</li>
+                            <li>Лёгкость в установке</li>
+                        </ul>
+                        <h4>Минусы:</h4>
+                        <ul>
+                            <li>Ограниченная прочность</li>
+                            <li>Не подходят для высоких нагрузок</li>
+                        </ul>
+                    </div>
+
+                    <h3>Таблица сравнения</h3>
+
+                    <table class="comparison-table">
+                        <thead>
+                        <tr>
+                            <th>Свойства</th>
+                            <th>REV Linear Motion Kit v2</th>
+                            <th>MISUMI SAR220 - 330</th>
+                            <th>goBILDA Viper Slide</th>
+                            <th>goBILDA Linear Actuator Kit</th>
+                            <th>Thrifty Telescoping Tube Kit</th>
+                            <th>Мебельные слайдеры</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Точность</td>
+                            <td>Низкая</td>
+                            <td>Высокая</td>
+                            <td>Средняя</td>
+                            <td>Высокая</td>
+                            <td>Средняя</td>
+                            <td>Низкая</td>
+                        </tr>
+                        <tr>
+                            <td>Скорость движения</td>
+                            <td>Средняя</td>
+                            <td>Высокая</td>
+                            <td>Средняя</td>
+                            <td>Средняя</td>
+                            <td>Средняя</td>
+                            <td>Средняя</td>
+                        </tr>
+                        <tr>
+                            <td>Прочность</td>
+                            <td>Средняя</td>
+                            <td>Средняя</td>
+                            <td>Средняя</td>
+                            <td>Средняя</td>
+                            <td>Высокая</td>
+                            <td>Низкая</td>
+                        </tr>
+                        <tr>
+                            <td>Модульность</td>
+                            <td>Высокая</td>
+                            <td>Средняя</td>
+                            <td>Средняя</td>
+                            <td>Низкая</td>
+                            <td>Высокая</td>
+                            <td>Низкая</td>
+                        </tr>
+                        <tr>
+                            <td>Сложность сборки</td>
+                            <td>Низкая</td>
+                            <td>Средняя</td>
+                            <td>Средняя</td>
+                            <td>Средняя</td>
+                            <td>Высокая</td>
+                            <td>Низкая</td>
+                        </tr>
+                        <tr>
+                            <td>Грузоподъёмность</td>
+                            <td>Средняя</td>
+                            <td>Средняя</td>
+                            <td>Средняя</td>
+                            <td>Средняя</td>
+                            <td>Высокая</td>
+                            <td>Низкая</td>
+                        </tr>
+                        <tr>
+                            <td>Стоимость</td>
+                            <td>Низкая</td>
+                            <td>Средняя</td>
+                            <td>Средняя</td>
+                            <td>Высокая</td>
+                            <td>Высокая</td>
+                            <td>Низкая</td>
+                        </tr>
+                         
+                        </tbody>
+                    </table>
+                </div>
+                <div class="author-box">
+                    <img src="images/dastan.jpg" alt="Автор">
+                    <h4>Автор: Мусурепов Дастан</h4>
+                    <p>Участник Robotek Rage</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="row justify-content-between">
+            <div class="col-lg-4">
+                <div class="widget">
+                    <h3>О нас</h3>
+                    <p>Мы — команда Robotek Rage, занимаемся робототехникой и стремимся к инновациям и победам в международных соревнованиях.</p>
+                </div>
+                <div class="widget">
+                    <h3>Связаться с нами</h3>
+                    <ul class="social list-unstyled">
+                        <li><a href="#"><span class="icon-facebook"></span></a></li>
+                        <li><a href="#"><span class="icon-twitter"></span></a></li>
+                        <li><a href="#"><span class="icon-instagram"></span></a></li>
+                        <li><a href="#"><span class="icon-linkedin"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="widget">
+                    <h3>Навигация</h3>
+                    <ul class="links list-unstyled">
+                        <li><a href="index.html">Main</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="technology.html">Сontent</a></li>
+                        <li><a href="cad.html">Cad models</a></li>
+                        <li><a href="images/dance.mp4">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</div>
+
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
